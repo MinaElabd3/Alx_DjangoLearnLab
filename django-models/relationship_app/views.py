@@ -20,12 +20,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 # Login view
-class LoginView(auth_views.LoginView):
-    template_name = 'relationship_app/login.html'
+def login_view(request):
+    return auth_views.LoginView.as_view(template_name='relationship_app/login.html')(request)
 
 # Logout view
-class LogoutView(auth_views.LogoutView):
-    template_name = 'relationship_app/logout.html'
+def logout_view(request):
+    return auth_views.LogoutView.as_view(template_name='relationship_app/logout.html')(request)
 
 # Registration view
 def register(request):
@@ -38,4 +38,3 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
-
