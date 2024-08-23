@@ -138,3 +138,17 @@ SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['yourdomain.com']
 
 
+# Enforce HTTPS connections
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+SECURE_HSTS_SECONDS = 31536000  # Force browsers to use HTTPS for the next year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Include subdomains in HSTS
+SECURE_HSTS_PRELOAD = True  # Allow browsers to preload HSTS policy
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+
