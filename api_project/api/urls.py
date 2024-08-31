@@ -5,8 +5,11 @@ urlpatterns = [
     path('books/', BookList.as_view(), name='book-list'),
 ]
 
+# api_project/urls.py
+from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('api/', include('api.urls')),
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),  # Ensure this line includes your app's urls.py
 ]
