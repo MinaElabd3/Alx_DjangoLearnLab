@@ -47,3 +47,12 @@ urlpatterns = [
     path('api/', include("api.urls")),
     path('', lambda request: HttpResponse('It works!')),
 ]
+
+
+from rest_framework.authtoken.views import obtain_auth_token
+from django.urls import path
+
+urlpatterns = [
+    # other URLs
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+]
