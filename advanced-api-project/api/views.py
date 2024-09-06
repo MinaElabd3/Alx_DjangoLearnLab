@@ -29,6 +29,8 @@ class BookListView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+    "CreateView", "UpdateView", "DeleteView"
+
     def perform_create(self, serializer):
         # Custom behavior before saving a new book
         serializer.save()
