@@ -29,6 +29,28 @@ class BookListView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+
+from rest_framework.filters import SearchFilter
+
+class BookListView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['title', 'author', 'publication_year']
+    search_fields = ['title', 'author']  # fields to search on
+
+
+    from rest_framework.filters import OrderingFilter
+
+class BookListView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['title', 'author', 'publication_year']
+    search_fields = ['title', 'author']
+    ordering_fields = ['title', 'publication_year']  # fields to allow ordering on
+
+
     "CreateView", "UpdateView", "DeleteView"
 
     def perform_create(self, serializer):
