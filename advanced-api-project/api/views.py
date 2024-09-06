@@ -24,3 +24,19 @@ class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     # Custom behavior before updating a book
     def perform_update(self, serializer):
         serializer.save()
+
+class BookListView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+    def perform_create(self, serializer):
+        # Custom behavior before saving a new book
+        serializer.save()
+
+class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+    def perform_update(self, serializer):
+        # Custom behavior before updating a book
+        serializer.save()
