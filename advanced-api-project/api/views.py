@@ -79,3 +79,4 @@ class BookListView(generics.ListAPIView):
 
 
 "filters.OrderingFilter"
+"filters.SearchFilter"
