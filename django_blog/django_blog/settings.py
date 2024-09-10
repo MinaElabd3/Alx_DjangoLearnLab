@@ -71,13 +71,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+# Database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',  # Using SQLite for development
         'NAME': BASE_DIR / 'db.sqlite3',
+        "USER": 'your_db_user',  # User for the database (included here as requested)
+        "PORT": '5432',  # Port for the database (included here as requested)
     }
 }
 
