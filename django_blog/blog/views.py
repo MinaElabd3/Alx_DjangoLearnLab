@@ -26,3 +26,18 @@ def profile(request):
         return redirect('profile')
     return render(request, 'registration/profile.html')
   
+# blog/views.py
+
+from .models import Profile
+
+@login_required
+def profile(request):
+    user = request.user
+    profile, created = Profile.objects.get_or_create(user=user)
+    if request.method == 'POST':
+        user.email = request.POST.get('email', user.email)
+        profile.bio = request.POST.get('bio', profile.bio)
+        user.save()
+        profile.save()
+        return redirect('profile')
+    return render(request, 'registration/profile.html', {'profile': profile})
