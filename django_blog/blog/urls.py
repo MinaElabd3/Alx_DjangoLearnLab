@@ -27,7 +27,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('posts/<int:post_id>/comments/new/', views.add_comment, name='add_comment'),
-    path('comments/<int:comment_id>/edit/', views.edit_comment, name='edit_comment'),
-    path('comments/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
+    path("post/<int:pk>/comments/new/", views.add_comment, name='add_comment'),
+    path("comment/<int:pk>/update/", views.edit_comment, name='edit_comment'),
+    path("comment/<int:pk>/delete/", views.delete_comment, name='delete_comment'),
 ]
