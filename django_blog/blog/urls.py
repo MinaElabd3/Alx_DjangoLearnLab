@@ -31,3 +31,12 @@ urlpatterns = [
     path("comment/<int:pk>/update/", views.edit_comment, name='edit_comment'),
     path("comment/<int:pk>/delete/", views.delete_comment, name='delete_comment'),
 ]
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('tags/<slug:tag_slug>/', views.posts_by_tag, name='posts_by_tag'),
+    path('search/', views.search_posts, name='search_posts'),
+]
+
