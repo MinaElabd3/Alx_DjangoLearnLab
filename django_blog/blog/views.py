@@ -97,7 +97,7 @@ from .forms import CommentForm
 
 # Add a new comment to a post
 @login_required
-def add_comment(request, post_id):
+def CommentCreateView(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -113,7 +113,7 @@ def add_comment(request, post_id):
 
 # Edit a comment
 @login_required
-def edit_comment(request, comment_id):
+def CommentUpdateView(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     if request.user != comment.author:
         return redirect('post_detail', id=comment.post.id)
@@ -129,7 +129,7 @@ def edit_comment(request, comment_id):
 
 # Delete a comment
 @login_required
-def delete_comment(request, comment_id):
+def CommentDeleteView(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     if request.user == comment.author:
         comment.delete()
