@@ -8,3 +8,10 @@
         <button type="submit">Save</button>
     </form>
 {% endblock %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- This renders all fields in the form, including the 'tags' field -->
+    <button type="submit">Save</button>
+</form>
+
