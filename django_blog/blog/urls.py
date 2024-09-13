@@ -38,5 +38,10 @@ from . import views
 urlpatterns = [
     path('tags/<slug:tag_slug>/', views.posts_by_tag, name='posts_by_tag'),
     path('search/', views.search_posts, name='search_posts'),
+        # Search and Tagging URLs
+    path('search/', search_posts, name='search-posts'),  # Search posts
+    path('tags/<str:tag_name>/', TaggedPostListView.as_view(), name='tagged-posts'),  # Posts by tag
+    path('tags/<slug:tag_slug>/', TaggedPostListView.as_view(), name='tagged-posts'),
+    path('tags/<slug:tag_slug>/', PostByTagListView.as_view(), name='posts-by-tag'),  # Posts by tag
 ]
 
