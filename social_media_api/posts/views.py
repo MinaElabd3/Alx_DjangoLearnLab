@@ -27,3 +27,11 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         return obj.author == request.user
+
+from rest_framework import filters
+
+class PostViewSet(viewsets.ModelViewSet):
+    # existing code
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'content']
+
