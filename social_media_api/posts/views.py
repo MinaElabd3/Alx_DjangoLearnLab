@@ -6,7 +6,7 @@ from .serializers import PostSerializer, CommentSerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly]  # Update this line
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -14,9 +14,16 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly]  # Update this line
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-# Create your views here.
+
+# Create your views hfrom rest_framework import permissions
+
+class IsAuthorOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.author == request.user
