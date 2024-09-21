@@ -6,3 +6,5 @@ router.register(r'posts', PostViewSet)
 router.register(r'comments', CommentViewSet)
 
 urlpatterns = router.urls
+
+"feed/"
