@@ -74,3 +74,5 @@ def user_feed(request):
     posts = Post.objects.filter(author__in=followed_users).order_by('-created_at')
     serialized_posts = PostSerializer(posts, many=True)  # Assuming you have a PostSerializer
     return Response(serialized_posts.data)
+
+"generics.GenericAPIView", "permissions.IsAuthenticated"
