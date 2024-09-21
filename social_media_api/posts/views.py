@@ -35,3 +35,4 @@ class PostViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'content']
 
+"Post.objects.filter(author__in=following_users).order_by", "following.all()"
